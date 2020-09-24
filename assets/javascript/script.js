@@ -1,7 +1,7 @@
 //TIMER FUNCTION
 //define variables
 var timeEl = document.querySelector(".navbar-text"); //links to location in html
-var secondsLeft = 67;
+var secondsLeft = 76;
 //define timer function
 function setTime() {
     var timerInterval = setInterval(function () {
@@ -10,23 +10,19 @@ function setTime() {
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
+            //add in game over link
         }
 
     }, 1000);
 }
 //call timer function -- need to set this inside start button on welcome page
-setTime();
+// setTime();
 
 
 //WELCOME PAGE FUNCTION
-//define variables
-var welcomeEL = document.querySelector(".welcome");
-//define function - create elements to display instructions, button below to start quiz. also link button to timer.
-function welcome() {
-    welcomeEL.textContent = "HI";
-}
-//call function at page load
-welcome();
+//listen for click, start timer
+document.getElementById("startBtn").addEventListener("click", setTime);
+//load questions, hide welcome div when questions start
 
 
 //QUESTIONS FUNCTION
