@@ -1,0 +1,10 @@
+#welcome {
+    text-align: center;
+    display: block;
+}
+
+li {
+    background-color: pink;
+    padding: 5px;
+    margin: 5px;
+}
