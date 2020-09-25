@@ -18,12 +18,12 @@ function setTime() {
 //WELCOME PAGE FUNCTION
 //listen for click, start timer
 document.getElementById("startBtn").addEventListener("click", setTime);
-document.getElementById("startBtn").addEventListener("click", questionDisplay);
+document.getElementById("startBtn").addEventListener("click", runQuestions);
 //load questions, hide welcome div when questions start
 
 //QUESTIONS FUNCTION
 //define question array
-
+var questionsEl = document.querySelector(".question");
 quizArr = [
   {
     questionText: "This is question one",
@@ -52,10 +52,36 @@ quizArr = [
   },
 ];
 
-function questionDisplay() {}
+//define table functions,
+function questionDisplay(qtn, choice) {
+  questionsEl.innerHTML = "";
+  // Title
+  var questionTitle = document.createElement("p");
+  var node = document.createTextNode(qtn);
+  questionTitle.appendChild(node);
+  questionsEl.appendChild(questionTitle);
 
-//define table functions, called in random order
-//call table functions
+  // Choices
+  var choiceAEl = document.createElement("li");
+  var choiceBEl = document.createElement("li");
+  var choiceCEl = document.createElement("li");
+  var questionBlock = document.createElement("ol");
+
+  questionBlock.appendChild(choiceAEl);
+  questionBlock.appendChild(choiceBEl);
+  questionBlock.appendChild(choiceCEl);
+  questionsEl.appendChild(questionBlock);
+}
+
+function handleAnswer() {}
+
+function runQuestions() {
+  //   for (var i = 0; i < quizArr.length; i++) {
+  for (var i = 0; i < 1; i++) {
+    questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
+    handleAnswer();
+  }
+}
 
 //SCORE PAGE FUNCTION
 //define scorepage
