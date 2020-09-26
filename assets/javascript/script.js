@@ -16,7 +16,8 @@ function setTime() {
 }
 
 function hide() {
-  var welcomeEl = document.getElementById("welcome");
+  //hides welcome div on button click
+  var welcomeEl = document.querySelector("#welcome");
   welcomeEl.style.display = "none";
 }
 //WELCOME PAGE FUNCTION
@@ -85,37 +86,65 @@ function questionDisplay(qtn, choice) {
   questionBlock.appendChild(choiceAEl);
   questionBlock.appendChild(choiceBEl);
   questionBlock.appendChild(choiceCEl);
+  console.log("display" + qtn);
 }
 //function to define choices interactivity
 //create clickable spans, onClick functionality
+
 function handleAnswer(ans) {
+  console.log("im the answer");
+
   questionsEl.onclick = function (event) {
     let li = event.target.closest("li");
     if (!li) return;
     if (!questionsEl.contains(li)) return;
-
-    if ((li.textContent = ans)) {
+    if (li.textContent === ans) {
       //change color green, move forward
+      console.log("green");
     } else {
       //change color red, time penalty, and move forward
+      console.log("red");
     }
   };
 }
+// function wait(ms) { //wait function
+//   var d = new Date();
+//   var d2 = null;
+//   do {
+//     d2 = new Date();
+//   } while (d2 - d < ms);
+// }
+// function doSetTimeout(i) {
+//   setTimeout(function () {
+//     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
+//     handleAnswer(quizArr[i].answer);
+//   }, 10000);
+// }
 
 //function to run questions, wraps displaying question with loop and answer functionality
 function runQuestions() {
-  for (var i = 0; i < quizArr.length; i++) {
-    //   for (var i = 0; i < 1; i++) {
-    // line 82 test parameter, replace with line 81 once working
+  //   for (var i = 0; i < quizArr.length; i++) {
+  for (var i = 0; i < 1; i++) {
+    // line 129 test parameter, replace with line 128 once working
     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
     handleAnswer(quizArr[i].answer);
-    return;
+    // doSetTimeout(i);
+    // setInterval(function () {
+    // }, 20000);
+    // wait(2000);
+    // console.log("waiting");
   }
 }
 
-//SCORE PAGE FUNCTION
-//define scorepage
-//call scorepage
+//SCORE DIV FUNCTION
+//define scorediv
+var scoreEl = document.querySelector(".score");
+
+function show() {
+  var scoreEl = document.querySelector(".score");
+  scoreEl.style.display = "block";
+}
+//call scorediv
 //store score in storage
 
 //HIGH SCORE PAGE FUNCTIONS
