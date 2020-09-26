@@ -8,3 +8,8 @@ li {
     padding: 5px;
     margin: 5px;
 }
+
+.score {
+    text-align: center;
+    display: none;
+}
