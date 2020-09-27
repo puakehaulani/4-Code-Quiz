@@ -121,13 +121,18 @@ function handleAnswer(ans) {
 //   }, 10000);
 // }
 
+//NEED TO KEEP TRACK of the clicks, a boolean, build that result into the while loop check answer function to pass in argument of the question to see if its right, then take that and use it to move on
+
 //function to run questions, wraps displaying question with loop and answer functionality
 function runQuestions() {
   //   for (var i = 0; i < quizArr.length; i++) {
-  for (var i = 0; i < 1; i++) {
+  //   for (var i = 0; i < 1; i++) {
+  while (secondsLeft >= 0 && i < quizArr.length) {
+    //define i var, scoped in this function only.
     // line 129 test parameter, replace with line 128 once working
     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
     handleAnswer(quizArr[i].answer);
+    i++; //here or not
     // doSetTimeout(i);
     // setInterval(function () {
     // }, 20000);
