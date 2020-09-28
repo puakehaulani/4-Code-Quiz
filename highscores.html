@@ -49,9 +49,9 @@
 
         var content = document.querySelector(".key");
         var user = document.createElement("li");
-        user.setAttribute("class", "scoreli");
+        user.setAttribute("class", "scoreli", );
         var blk = document.createElement("ul");
-        var node = document.createTextNode(key + " : " + value)
+        var node = document.createTextNode(value + " - " + key.toUpperCase())
 
         user.appendChild(node);
         blk.appendChild(user);
