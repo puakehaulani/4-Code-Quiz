@@ -21,38 +21,46 @@ function hide() {
   var welcomeEl = document.querySelector("#welcome");
   welcomeEl.style.display = "none";
 }
-//load questions, hide welcome div when questions start
+
 
 //QUESTIONS FUNCTION
 //define question array
 var questionsEl = document.querySelector(".question");
 
-quizArr = [
-  {
-    questionText:
-      "______ tag is an extension to HTML that can enclose any number of JavaScript statements.",
+quizArr = [{
+    questionText: "______ tag is an extension to HTML that can enclose any number of JavaScript statements.",
     multipleChoice: ["<SCRIPT>", "<BODY>", "<HEAD>"],
     answer: "<SCRIPT>",
   },
   {
-    questionText: "This is question two",
-    multipleChoice: ["", "", ""],
-    answer: "this is the answer",
+    questionText: "What are variables used for in JavaScript Programs?",
+    multipleChoice: ["Storing numbers, dates, or other values", "Varying randomly", "Causing high-school algebra flashbacks"],
+    answer: "Storing numbers, dates, or other values",
   },
   {
-    questionText: "This is question three",
-    multipleChoice: ["", "", ""],
-    answer: "this is the answer",
+    questionText: "What should appear at the very end of your JavaScript?",
+    multipleChoice: ["The </script>", "The <script>", "The END statement"],
+    answer: "The </script>",
   },
   {
-    questionText: "This is question four",
-    multipleChoice: ["", "", ""],
-    answer: "this is the answer",
+    questionText: 'What is the correct JavaScript syntax to write "Hello World"?',
+    multipleChoice: ['System.out.println("Hello World")', 'document.write("Hello World")', 'response.write("Hello World")'],
+    answer: 'document.write("Hello World")',
   },
   {
-    questionText: "This is question five",
-    multipleChoice: ["", "", ""],
-    answer: "this is the answer",
+    questionText: 'What is the correct syntax for referring to an external script called " abc.js"?',
+    multipleChoice: ['<script href=" abc.js">', '<script name=" abc.js">', '<script src=" abc.js">'],
+    answer: '<script src=" abc.js">',
+  },
+  {
+    questionText: 'Which is the correct way to write a JavaScript array?',
+    multipleChoice: ['var txt = new Array("tim","kim","jim")', 'var txt = new Array(1:"tim",2:"kim",3:"jim")', 'var txt = new Array="tim","kim","jim"'],
+    answer: 'var txt = new Array("tim","kim","jim")',
+  },
+  {
+    questionText: "Which of the following best describes JavaScript?",
+    multipleChoice: ["a low-level programming language.", "a scripting language precompiled in the browser.", "an object-oriented scripting language."],
+    answer: "an object-oriented scripting language.",
   },
 ];
 
@@ -85,31 +93,24 @@ function questionDisplay(qtn, choice) {
   questionBlock.appendChild(choiceCEl);
   console.log("display" + qtn);
 }
-//function to define choices interactivity
-//create clickable spans, onClick functionality
-
-// function handleAnswer(ans, i) {
-//   console.log("im the answer");
 
 questionsEl.onclick = function (event) {
   let li = event.target.closest("li");
   if (!li) return;
   if (!questionsEl.contains(li)) return;
   if (li.textContent === quizArr[currentQuestion].answer) {
-    //change color green, move forward
     console.log("green");
     currentQuestion++;
     console.log(currentQuestion);
     runQuestion();
   } else {
-    //change color red, time penalty, and move forward
     console.log("red");
     currentQuestion++;
     runQuestion();
   }
-  // clicked = true;
+
 };
-// }
+
 function runQuestion() {
   questionDisplay(
     quizArr[currentQuestion].questionText,
@@ -120,41 +121,8 @@ function runQuestion() {
 //listen for click, start timer
 document.getElementById("startBtn").addEventListener("click", hide);
 document.getElementById("startBtn").addEventListener("click", setTime);
-document.getElementById("startBtn").addEventListener(
-  "click",
-  runQuestion
-  // questionDisplay(
-  //   quizArr[currentQuestion].questionText,
-  //   quizArr[currentQuestion].multipleChoice
-  // )
-);
+document.getElementById("startBtn").addEventListener("click", runQuestion);
 console.log(currentQuestion);
-//NEED TO KEEP TRACK of the clicks, a boolean, build that result into the while loop check answer function to pass in argument of the question to see if its right, then take that and use it to move on
-
-//function to run questions, wraps displaying question with loop and answer functionality
-// function runQuestions() {
-//   //   for (var i = 0; i < quizArr.length; i++) {
-//   //   for (var i = 0; i < 1; i++) {
-//   let i = 0;
-//   while (secondsLeft >= 0 && i < quizArr.length) {
-//     // let clicked = false;
-
-//     //define i var, scoped in this function only.
-
-//     // line 129 test parameter, replace with line 128 once working
-//     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
-//     handleAnswer(quizArr[i].answer, i);
-// if (clicked === true) {
-// i++;
-// }
-//here or not
-// doSetTimeout(i);
-// setInterval(function () {
-// }, 20000);
-// wait(2000);
-// console.log("waiting");
-// }
-// }
 
 //SCORE DIV FUNCTION
 //define scorediv
