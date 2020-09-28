@@ -68,6 +68,7 @@ function setTime() {
     }
   }, 1000);
 }
+
 //function to display question,
 function questionDisplay(qtn, choice) {
   console.log("question display");
@@ -111,6 +112,7 @@ questionsEl.onclick = function (event) {
     console.log("red");
     if (secondsLeft < 25) {
       secondsLeft = 0
+      score();
     } else {
       secondsLeft = secondsLeft - 25;
     }

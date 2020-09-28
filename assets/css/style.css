@@ -4,12 +4,11 @@
 }
 
 li {
-    background-color: pink;
+    background-color: burlywood;
     padding: 5px;
     margin: 5px;
 }
 
-.score {
-    text-align: center;
-    display: none;
+.questions {
+    display: block;
 }

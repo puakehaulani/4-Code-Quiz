@@ -13,13 +13,20 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Compete Again!</a>
-        <!-- <div class="ml-auto" id="navbarText">
-            <span class="navbar-text">
-                Time left
-            </span>
-        </div> -->
     </nav>
-    <!--enter div class to get results from storage (local/client/session?)-->
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>High Scores</h1>
+                        <div class="key"></div>
+                        <div class="value"></div>
+
+                    </div>
+                </div>
+            </div>
+    </main>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -31,6 +38,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
-<script src="assets/javascript/script.js"></script>
+<script>
+    let i = 0
+    while (i < localStorage.length) {
+        var key = localStorage.key(i);
+        var value = localStorage[key];
+        console.log(key + " " + value);
+        var content = document.querySelector(".key");
+        var node = document.createTextNode(key + " : " + value);
+        content.appendChild(node);
+        i++;
+    }
+</script>
 
 </html>
