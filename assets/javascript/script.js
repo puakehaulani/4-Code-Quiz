@@ -2,7 +2,7 @@ var currentQuestion = 0;
 //TIMER FUNCTION
 //define variables
 var timeEl = document.querySelector(".navbar-text"); //links to location in html
-var secondsLeft = 75;
+var secondsLeft = 60;
 //define timer function
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -102,36 +102,66 @@ questionsEl.onclick = function (event) {
     console.log("green");
     currentQuestion++;
     console.log(currentQuestion);
-    runQuestion();
+    runQuiz();
   } else {
     console.log("red");
     currentQuestion++;
-    runQuestion();
+    runQuiz();
   }
 
 };
 
-function runQuestion() {
-  questionDisplay(
-    quizArr[currentQuestion].questionText,
-    quizArr[currentQuestion].multipleChoice
-  );
+function runQuiz() {
+  if (currentQuestion < quizArr.length) {
+    questionDisplay(
+      quizArr[currentQuestion].questionText,
+      quizArr[currentQuestion].multipleChoice
+    );
+  } else {
+    score()
+  }
 }
-//WELCOME PAGE FUNCTION
-//listen for click, start timer
-document.getElementById("startBtn").addEventListener("click", hide);
-document.getElementById("startBtn").addEventListener("click", setTime);
-document.getElementById("startBtn").addEventListener("click", runQuestion);
-console.log(currentQuestion);
-
 //SCORE DIV FUNCTION
 //define scorediv
 var scoreEl = document.querySelector(".score");
 
-function show() {
-  var scoreEl = document.querySelector(".score");
-  scoreEl.style.display = "block";
+function score() {
+  // questionsEl.innerHTML = ""; //clears earlier content so it doesnt display all questions together
+  // Title
+
+  var scoreHeader = document.createElement("h1");
+  var node = document.createTextNode("It's Over");
+  scoreHeader.appendChild(node);
+  scoreEl.appendChild(scoreHeader);
+
+  // Choices
+  var yourScore = document.createElement("p");
+  var enterInitial = document.createElement("p");
+  var tryAgain = document.createElement("a");
+
+  //Building
+  var nodeA = document.createTextNode("Your score: " + secondsLeft);
+  yourScore.appendChild(nodeA);
+  var nodeB = document.createTextNode("Enter initials:");
+  enterInitial.appendChild(nodeB);
+  var nodeC = document.createTextNode("Try again");
+  tryAgain.setAttribute("href", "index.html");
+  tryAgain.appendChild(nodeC);
+
+  scoreEl.appendChild(yourScore);
+  scoreEl.appendChild(enterInitial);
+  scoreEl.appendChild(tryAgain);
+
 }
+
+//WELCOME PAGE FUNCTION
+//listen for click, start timer
+document.getElementById("startBtn").addEventListener("click", hide);
+document.getElementById("startBtn").addEventListener("click", setTime);
+document.getElementById("startBtn").addEventListener("click", runQuiz);
+console.log(currentQuestion);
+
+
 //call scorediv
 //store score in storage
 
