@@ -105,6 +105,7 @@ questionsEl.onclick = function (event) {
     runQuiz();
   } else {
     console.log("red");
+    secondsLeft = secondsLeft - 25;
     currentQuestion++;
     runQuiz();
   }
@@ -142,20 +143,22 @@ function score() {
 
   // Choices
   var yourScore = document.createElement("p");
-  var enterInitial = document.createElement("p");
+  var enterInitial = document.createElement("input");
   var tryAgain = document.createElement("a");
+  var brk = document.createElement("br");
 
   //Building
   var nodeA = document.createTextNode("Your score: " + secondsLeft);
   yourScore.appendChild(nodeA);
-  var nodeB = document.createTextNode("Enter initials:");
-  enterInitial.appendChild(nodeB);
+  enterInitial.setAttribute("placeholder", "Your initials");
+  enterInitial.setAttribute("maxlength", 3);
   var nodeC = document.createTextNode("Try again");
   tryAgain.setAttribute("href", "index.html");
   tryAgain.appendChild(nodeC);
 
   scoreEl.appendChild(yourScore);
   scoreEl.appendChild(enterInitial);
+  scoreEl.appendChild(brk);
   scoreEl.appendChild(tryAgain);
 
 }
