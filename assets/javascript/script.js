@@ -4,17 +4,7 @@ var currentQuestion = 0;
 var timeEl = document.querySelector(".navbar-text"); //links to location in html
 var secondsLeft = 60;
 //define timer function
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      //add in game over link
-    }
-  }, 1000);
-}
 
 function hideWelcome() {
   //hides welcome div on button click
@@ -64,6 +54,20 @@ quizArr = [{
   },
 ];
 
+function setTime() {
+  var timerInterval = setInterval(function () {
+    // secondsLeft--;
+    timeEl.textContent = "Time: " + secondsLeft;
+
+    if (secondsLeft <= 0 || currentQuestion >= quizArr.length) {
+      clearInterval(timerInterval);
+      console.log("TIME");
+      //add in game over link
+    } else {
+      secondsLeft--;
+    }
+  }, 1000);
+}
 //function to display question,
 function questionDisplay(qtn, choice) {
   console.log("question display");
@@ -105,7 +109,11 @@ questionsEl.onclick = function (event) {
     runQuiz();
   } else {
     console.log("red");
-    secondsLeft = secondsLeft - 25;
+    if (secondsLeft < 25) {
+      secondsLeft = 0
+    } else {
+      secondsLeft = secondsLeft - 25;
+    }
     currentQuestion++;
     runQuiz();
   }
@@ -133,7 +141,6 @@ function hideQuestions() {
 
 function score() {
   hideQuestions();
-  // questionsEl.innerHTML = ""; //clears earlier content so it doesnt display all questions together
   // Title
 
   var scoreHeader = document.createElement("h1");
@@ -141,26 +148,45 @@ function score() {
   scoreHeader.appendChild(node);
   scoreEl.appendChild(scoreHeader);
 
-  // Choices
+  // lines
   var yourScore = document.createElement("p");
   var enterInitial = document.createElement("input");
+  var submitBtn = document.createElement("button");
   var tryAgain = document.createElement("a");
   var brk = document.createElement("br");
 
   //Building
   var nodeA = document.createTextNode("Your score: " + secondsLeft);
   yourScore.appendChild(nodeA);
+
   enterInitial.setAttribute("placeholder", "Your initials");
   enterInitial.setAttribute("maxlength", 3);
+  enterInitial.setAttribute("id", "initialInput");
+  submitBtn.setAttribute("class", "submit");
+  submitBtn.setAttribute("type", "submit");
+  submitBtn.textContent = "submit";
+
   var nodeC = document.createTextNode("Try again");
   tryAgain.setAttribute("href", "index.html");
   tryAgain.appendChild(nodeC);
 
   scoreEl.appendChild(yourScore);
   scoreEl.appendChild(enterInitial);
+  scoreEl.appendChild(submitBtn);
   scoreEl.appendChild(brk);
   scoreEl.appendChild(tryAgain);
 
+  var buttonSubmit = document.querySelector(".submit");
+  buttonSubmit.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (enterInitial.value.length < 1)
+      return;
+    else {
+      // enterInitial.value = "";
+      // localStorage.setItem("initials", );
+      localStorage.setItem(document.getElementById("initialInput").value, secondsLeft);
+    }
+  })
 }
 
 //WELCOME PAGE FUNCTION
@@ -168,7 +194,7 @@ function score() {
 document.getElementById("startBtn").addEventListener("click", hideWelcome);
 document.getElementById("startBtn").addEventListener("click", setTime);
 document.getElementById("startBtn").addEventListener("click", runQuiz);
-console.log(currentQuestion);
+
 
 
 //call scorediv
