@@ -56,13 +56,12 @@ quizArr = [{
 
 function setTime() {
   var timerInterval = setInterval(function () {
-    // secondsLeft--;
     timeEl.textContent = "Time: " + secondsLeft;
 
     if (secondsLeft <= 0 || currentQuestion >= quizArr.length) {
       clearInterval(timerInterval);
-      console.log("TIME");
-      //add in game over link
+      //add in game over links
+      score();
     } else {
       secondsLeft--;
     }
@@ -104,9 +103,8 @@ questionsEl.onclick = function (event) {
   if (!li) return;
   if (!questionsEl.contains(li)) return;
   if (li.textContent === quizArr[currentQuestion].answer) {
-    console.log("green");
     currentQuestion++;
-    console.log(currentQuestion);
+    // console.log(currentQuestion);
     runQuiz();
   } else {
     console.log("red");
@@ -184,9 +182,9 @@ function score() {
     if (enterInitial.value.length < 1)
       return;
     else {
-      // enterInitial.value = "";
       // localStorage.setItem("initials", );
       localStorage.setItem(document.getElementById("initialInput").value, secondsLeft);
+      enterInitial.value = "";
     }
   })
 }
