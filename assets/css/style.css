@@ -12,3 +12,11 @@ li {
 .questions {
     display: block;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.scoreli {
+    background-color: lavender;
+}
