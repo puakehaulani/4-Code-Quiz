@@ -163,6 +163,7 @@ function score() {
   enterInitial.setAttribute("placeholder", "Your initials");
   enterInitial.setAttribute("maxlength", 3);
   enterInitial.setAttribute("id", "initialInput");
+
   submitBtn.setAttribute("class", "submit");
   submitBtn.setAttribute("type", "submit");
   submitBtn.textContent = "submit";
@@ -187,6 +188,7 @@ function score() {
       localStorage.setItem(document.getElementById("initialInput").value, secondsLeft);
       enterInitial.value = "";
     }
+    document.querySelector(".submit").disabled = true; //disables button, submit initials only once per try
   })
 }
 
