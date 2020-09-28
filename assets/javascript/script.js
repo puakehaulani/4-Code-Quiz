@@ -16,7 +16,7 @@ function setTime() {
   }, 1000);
 }
 
-function hide() {
+function hideWelcome() {
   //hides welcome div on button click
   var welcomeEl = document.querySelector("#welcome");
   welcomeEl.style.display = "none";
@@ -125,7 +125,13 @@ function runQuiz() {
 //define scorediv
 var scoreEl = document.querySelector(".score");
 
+function hideQuestions() {
+  //hides welcome div on button click
+  questionsEl.style.display = "none";
+}
+
 function score() {
+  hideQuestions();
   // questionsEl.innerHTML = ""; //clears earlier content so it doesnt display all questions together
   // Title
 
@@ -156,7 +162,7 @@ function score() {
 
 //WELCOME PAGE FUNCTION
 //listen for click, start timer
-document.getElementById("startBtn").addEventListener("click", hide);
+document.getElementById("startBtn").addEventListener("click", hideWelcome);
 document.getElementById("startBtn").addEventListener("click", setTime);
 document.getElementById("startBtn").addEventListener("click", runQuiz);
 console.log(currentQuestion);
