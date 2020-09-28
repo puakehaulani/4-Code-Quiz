@@ -3,6 +3,16 @@
     display: block;
 }
 
+body {
+    min-height: 100%;
+    background-image: url(../images/background.jpg);
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom left;
+
+}
+
 li {
     background-color: burlywood;
     padding: 5px;
