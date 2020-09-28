@@ -39,16 +39,36 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 <script>
-    let i = 0
+    let i = 0;
     while (i < localStorage.length) {
+
         var key = localStorage.key(i);
         var value = localStorage[key];
+
         console.log(key + " " + value);
+
         var content = document.querySelector(".key");
-        var node = document.createTextNode(key + " : " + value);
-        content.appendChild(node);
+        var user = document.createElement("li");
+        user.setAttribute("class", "scoreli");
+        var blk = document.createElement("ul");
+        var node = document.createTextNode(key + " : " + value)
+
+        user.appendChild(node);
+        blk.appendChild(user);
+        content.appendChild(blk);
         i++;
+
     }
+
+    var val = document.querySelector(".value");
+    var clrBtn = document.createElement("button");
+    clrBtn.setAttribute("class", "clearBtn");
+    clrBtn.textContent = "Clear High Scores"
+    clrBtn.onclick = function () {
+        window.localStorage.clear();
+        document.querySelector(".key").innerHTML = "";
+    }
+    val.appendChild(clrBtn);
 </script>
 
 </html>
