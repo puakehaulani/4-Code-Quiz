@@ -15,8 +15,15 @@ li {
 
 ul {
     list-style-type: none;
+
+}
+
+li {
+    display: table;
 }
 
 .scoreli {
     background-color: lavender;
+    display: table;
+    width: 100px;
 }
