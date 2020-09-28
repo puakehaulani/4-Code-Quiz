@@ -1,3 +1,4 @@
+var currentQuestion = 0;
 //TIMER FUNCTION
 //define variables
 var timeEl = document.querySelector(".navbar-text"); //links to location in html
@@ -20,17 +21,12 @@ function hide() {
   var welcomeEl = document.querySelector("#welcome");
   welcomeEl.style.display = "none";
 }
-//WELCOME PAGE FUNCTION
-//listen for click, start timer
-document.getElementById("startBtn").addEventListener("click", hide);
-document.getElementById("startBtn").addEventListener("click", setTime);
-document.getElementById("startBtn").addEventListener("click", runQuestions);
-
 //load questions, hide welcome div when questions start
 
 //QUESTIONS FUNCTION
 //define question array
 var questionsEl = document.querySelector(".question");
+
 quizArr = [
   {
     questionText:
@@ -62,6 +58,7 @@ quizArr = [
 
 //function to display question,
 function questionDisplay(qtn, choice) {
+  console.log("question display");
   questionsEl.innerHTML = ""; //clears earlier content so it doesnt display all questions together
   // Title
   var questionTitle = document.createElement("p");
@@ -91,55 +88,73 @@ function questionDisplay(qtn, choice) {
 //function to define choices interactivity
 //create clickable spans, onClick functionality
 
-function handleAnswer(ans) {
-  console.log("im the answer");
+// function handleAnswer(ans, i) {
+//   console.log("im the answer");
 
-  questionsEl.onclick = function (event) {
-    let li = event.target.closest("li");
-    if (!li) return;
-    if (!questionsEl.contains(li)) return;
-    if (li.textContent === ans) {
-      //change color green, move forward
-      console.log("green");
-    } else {
-      //change color red, time penalty, and move forward
-      console.log("red");
-    }
-  };
+questionsEl.onclick = function (event) {
+  let li = event.target.closest("li");
+  if (!li) return;
+  if (!questionsEl.contains(li)) return;
+  if (li.textContent === quizArr[currentQuestion].answer) {
+    //change color green, move forward
+    console.log("green");
+    currentQuestion++;
+    console.log(currentQuestion);
+    runQuestion();
+  } else {
+    //change color red, time penalty, and move forward
+    console.log("red");
+    currentQuestion++;
+    runQuestion();
+  }
+  // clicked = true;
+};
+// }
+function runQuestion() {
+  questionDisplay(
+    quizArr[currentQuestion].questionText,
+    quizArr[currentQuestion].multipleChoice
+  );
 }
-// function wait(ms) { //wait function
-//   var d = new Date();
-//   var d2 = null;
-//   do {
-//     d2 = new Date();
-//   } while (d2 - d < ms);
-// }
-// function doSetTimeout(i) {
-//   setTimeout(function () {
-//     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
-//     handleAnswer(quizArr[i].answer);
-//   }, 10000);
-// }
-
+//WELCOME PAGE FUNCTION
+//listen for click, start timer
+document.getElementById("startBtn").addEventListener("click", hide);
+document.getElementById("startBtn").addEventListener("click", setTime);
+document.getElementById("startBtn").addEventListener(
+  "click",
+  runQuestion
+  // questionDisplay(
+  //   quizArr[currentQuestion].questionText,
+  //   quizArr[currentQuestion].multipleChoice
+  // )
+);
+console.log(currentQuestion);
 //NEED TO KEEP TRACK of the clicks, a boolean, build that result into the while loop check answer function to pass in argument of the question to see if its right, then take that and use it to move on
 
 //function to run questions, wraps displaying question with loop and answer functionality
-function runQuestions() {
-  //   for (var i = 0; i < quizArr.length; i++) {
-  //   for (var i = 0; i < 1; i++) {
-  while (secondsLeft >= 0 && i < quizArr.length) {
-    //define i var, scoped in this function only.
-    // line 129 test parameter, replace with line 128 once working
-    questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
-    handleAnswer(quizArr[i].answer);
-    i++; //here or not
-    // doSetTimeout(i);
-    // setInterval(function () {
-    // }, 20000);
-    // wait(2000);
-    // console.log("waiting");
-  }
-}
+// function runQuestions() {
+//   //   for (var i = 0; i < quizArr.length; i++) {
+//   //   for (var i = 0; i < 1; i++) {
+//   let i = 0;
+//   while (secondsLeft >= 0 && i < quizArr.length) {
+//     // let clicked = false;
+
+//     //define i var, scoped in this function only.
+
+//     // line 129 test parameter, replace with line 128 once working
+//     questionDisplay(quizArr[i].questionText, quizArr[i].multipleChoice);
+//     handleAnswer(quizArr[i].answer, i);
+// if (clicked === true) {
+// i++;
+// }
+//here or not
+// doSetTimeout(i);
+// setInterval(function () {
+// }, 20000);
+// wait(2000);
+// console.log("waiting");
+// }
+// }
 
 //SCORE DIV FUNCTION
 //define scorediv
