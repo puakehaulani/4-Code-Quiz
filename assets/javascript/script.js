@@ -140,6 +140,7 @@ function hideQuestions() {
 }
 
 function score() {
+  scoreEl.innerHTML = "";
   hideQuestions();
   // Title
 
