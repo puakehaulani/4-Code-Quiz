@@ -168,8 +168,9 @@ function score() {
   submitBtn.setAttribute("type", "submit");
   submitBtn.textContent = "submit";
 
-  var nodeC = document.createTextNode("Try again");
+  var nodeC = document.createTextNode("Click here to try again");
   tryAgain.setAttribute("href", "index.html");
+  tryAgain.setAttribute("class", "link");
   tryAgain.appendChild(nodeC);
 
   scoreEl.appendChild(yourScore);

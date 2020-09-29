@@ -13,8 +13,38 @@ body {
     background-position: bottom left;
 }
 
+nav {
+    background-color: black;
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+button {
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card-body {
+    background-color: rgba(24, 44, 30, 0.4);
+
+
+}
+
+.link {
+    color: rgb(2, 59, 19);
+}
+
 li {
-    background-color: burlywood;
+    background-color: rgb(135, 222, 142);
+    border-radius: 5px;
     padding: 5px;
     margin: 5px;
 }
@@ -32,7 +62,8 @@ li {
 }
 
 .scoreli {
-    background-color: lavender;
+    background-color: rgb(135, 222, 142);
+    border-radius: 3px;
     display: table;
     width: 100px;
 }
