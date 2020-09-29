@@ -17,6 +17,11 @@
 Javascript
 Bootstrap
 
+## Usage
+
+To compete, press the start button. The timer is set to 60 seconds, and counts down on start button click. Choose the correct answer for each question. If the correct answer is chosen, the quiz proceeds to the next question. If the answer is incorrect, the timer is deducted by 25 seconds. The quiz is over when all the questions are answered or the timer reaches zero. The score is the time left when the quiz is over.  
+Player initials can be entered at the end of the quiz, and are stored in local storage. The list of high scores can be accessed on the [High Score page](https://puakehaulani.github.io/4-Code-Quiz/highscores.html).
+
 ## Installation
 
 Clone the repo
