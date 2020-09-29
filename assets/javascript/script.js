@@ -107,6 +107,7 @@ questionsEl.onclick = function (event) {
     // console.log(currentQuestion);
     runQuiz();
   } else {
+    // document.querySelector("li").style.background = red;
     console.log("red");
     if (secondsLeft < 25) {
       secondsLeft = 0
