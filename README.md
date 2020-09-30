@@ -1,7 +1,7 @@
 # Code Quiz
 
-[Deployed Project](https://github.com/puakehaulani/4-Code-Quiz)  
-[Github Repo](https://puakehaulani.github.io/4-Code-Quiz/)
+[Deployed Project](https://puakehaulani.github.io/4-Code-Quiz/)  
+[Github Repo](https://github.com/puakehaulani/4-Code-Quiz)
 
 ## About the Project
 
